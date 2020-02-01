@@ -40,6 +40,11 @@ services:
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
+      - type: bind
+        source: ./logstash/data/movies.csv
+        target: /usr/share/logstash/data/movies.csv
+        read_only: true
+    command: logstash -f /usr/share/logstash/pipeline/logstash.conf
     ports:
       - "5000:5000"
       - "9600:9600"
